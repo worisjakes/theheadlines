@@ -1,0 +1,158 @@
+#news, #headline{
+    display:block;
+    
+
+}
+#header{
+    text-shadow: 4px 4px 8px black ;
+}
+#headline{
+    margin-left: 40px;
+    
+}
+#news{
+    margin-left: 80px;
+}
+header.h1{
+    color: red;
+    background: url("https://ichef.bbci.co.uk/images/ic/640xn/p02k71b2.jpg");
+    background-size: contain;
+}
+div{
+    background-color:rgba(211,211,211, 0.3);
+    font-weight: small;
+}
+li{
+    list-style: none;
+    display:inline;
+}
+.headline{
+    background-color: white;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left:20px;
+}
+div.h5{
+    border-radius:50%;
+}
+div.iwitness{
+    background: url("http://adigaskell.org/wp-content/uploads/2014/05/eyewitness.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.headline.iwitness{
+    opacity:0.9;
+}
+.valign-wrapper{
+    margin-top: 20px;
+}
+button.btn{
+    background: black;
+    width:600px;
+    margin:0 auto;
+
+}
+.headline.order{
+    opacity:0.9;
+}
+.modal-trigger{
+    visibility: hidden;
+}
+div.card{
+    border:2px solid black;
+}
+form#order{
+    border:2px solid black;
+    border-radius: 5px;
+}
+span.headlines{
+    opacity: 0.4;
+}
+ul.pagination{
+    margin-left : 100px;;
+}
+#facebook{
+    margin-bottom: 0px;
+}
+li.footer{
+    display:block
+}
+div.wrapper{
+    background-color:rgb(211,211,211);
+    border:1px solid white;
+    }
+div.wrapper.order{
+    background: url("https://dzamqefpotdvf.cloudfront.net/p/images/ce635835-b853-4a0d-92d6-b9f7532f3dd6_newspaper_carrier_MCS_770x829.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+    div.cat{
+        padding:2px;
+        padding-left:6px;
+        opacity: 0.8;
+        margin-top:10px;
+    }
+    .parallax{
+        position: static;
+    }
+blockquote.jumbo{
+    margin:20px;
+    box-shadow: 8px 8px 12px black ;
+    height: auto;
+    padding:0px;
+    margin-top:100px;
+}
+blockquote.jumbo:nth-child(odd){
+    background:black;
+    color: white
+}
+#imagestatus{
+    border:4px solid black;
+    border-radius: 5px;
+    display: inline !important;
+    margin-left: 50px;
+    padding: 5px;
+}
+#ptags{
+    margin-top: 10px;
+    padding:0px;
+}
+#tags:nth-child(odd){
+    border: 0.7px solid black;
+    border-radius: 5px;
+}
+.myAnimate{
+ 	-webkit-animation: fadein 6s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 6s; /* Firefox < 16 */
+        -ms-animation: fadein 6s; /* Internet Explorer */
+         -o-animation: fadein 6s; /* Opera < 12.1 */
+            animation: fadein 6s;
+ }
+ @keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+.up{
+animation-name: up;
+animation-duration: 4s;
+}
+@keyframes up{
+    0% {transform: translateY(20px); opacity: 0}
+    100% { transform:translateY(0); opacity: 1}
+}

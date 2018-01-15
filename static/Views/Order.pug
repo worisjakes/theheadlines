@@ -1,0 +1,159 @@
+doctype html
+html
+    head(lang = "en")
+        title Headline News | Home
+        link(rel = "stylesheet", href="/main.css")
+        link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster")
+        link(rel = "stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css")
+        link(href="https://fonts.googleapis.com/icon?family=Material+Icons", rel="stylesheet")
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous")
+        script(src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous")
+        script(src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous")
+        script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js")
+        script(src="/mainjs.js")
+        script(src="https://use.fontawesome.com/46f472fe73.js")
+        meta(charset = "utf-8")
+        meta(name ="viewport", content = "width= device-width, initial-scale = 1.0")
+    body
+        mixin display(href, word)
+            each images in href
+                -var d = new Date();
+                -var today = d.toLocaleDateString();
+                if images.imagestatus && today == images.postdate
+                    img.materialboxed.responsive-img#imagestatus.center-align(src =images.imagestatus width = "50%"  height = "auto" style = "display:inline")
+        header#header.h1.black-text(style="font-family:Lobster") The
+            span#headline  Headline 
+            span#news  News
+        ul.side-nav(id = "slide-out")
+            li 
+                div.user-view(style="height:280px")
+                    div.background
+                        img.responsive-img(src="http://www.imagesbuddy.com/images/53/2013/06/good-morning-tea-newspaper-graphic.jpg" height="100%")
+            li
+                a(href = "/home") HOME
+            li
+                a(href = "/orderNow") ORDER
+            li
+                a(href = "/iwitness") EYE WITNESS
+            li
+                +display(headlines, "Hello world")
+        a.pulse.button-collapse(href = "#" data-activates = "slide-out")
+            i.material-icons menu
+        div(class="slider")
+            ul(class="slides")
+                each img in worldNews
+                    -var d = new Date();
+                    -var today = d.toLocaleDateString();
+                    if today == img.postdate
+                        li
+                            img.responsive-img(src=img.images)
+                            div(class="caption left-align")
+                                h3 #{img.worldnews}
+                                h5.black(class="light grey-text text-lighten-3") #World News
+        .parallax-container
+            .parallax
+                img(src = "http://c7.alamy.com/comp/BBBBC5/newspaper-stand-BBBBC5.jpg")
+        button.btn.modal-trigger.open(data-target = "modal1") Modal
+            #modal1.modal(style = "height:100px")
+                .modal-content
+                    h4.black-text Order Successfully taken
+                        i.material-icons.large check_circle
+        div.wrapper.order 
+            h1.center-align Order Now
+            #headline.headline.h3.order
+                div.card
+                    div.card-image.waves-effect.waves-block.waves-light
+                        img.activator(src="http://www.newspaper-delivery.com/wp-content/uploads/2015/06/newspaper-delivery-cambridge1.jpg")
+    
+                    div.card-content
+                        span.card-title.activator.grey-text.text-darken-4 Have you read todays paper?
+                            i.material-icons.right more_vert    
+                        p
+                            a(href="#") This is a link
+                    div.card-reveal
+                        span.card-title.grey-text.text-darken-4 The Headlines Paper Delivery
+                            i.material-icons.right close
+                            br
+                            br
+                            br
+                            p.
+                                You can now get various Newspapers delivered to your home or office with headline deliveries.
+                                We deliver all around Lagos. Fill form to submit Order.
+    
+                br
+                br
+                hr.order
+                form#order()
+                p#input
+                    .input-field
+                        i.material-icons.prefix account_circle
+                        input.form-control(type="text" id = "name" name = "name" placeholder="Please enter your name here" required)
+                        label.h4(for ="name") Name
+                    .input-field
+                        i.material-icons.prefix phone
+                        input.form-control(type="tel" id ="tel" pattern ="/[0-9]{11}/" title="Must be 11 characters long" name = "tel" placeholder="Please enter Tel phone number" required)
+                        label.h4(for ="tel") Phone Number
+                    .input-field
+                        i.material-icons.prefix email
+                        input.form-control(type="email" title=" Should be of type example@mail.com" id = "email" pattern="/[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm" name = "email" placeholder="Please enter your email address" required)
+                        label.h4(for ="email") Email address
+                    br
+                    .input-field
+                        select( id ="choice" name ="paper" value = "" selected) Choose a paper to filter
+                            option(value = "Vanguard") Vanguard
+                            option(value = "Sun") Sun
+                            option(value = "Guardian") Guardian
+                            option(value = "Daily Times") Daily Times
+                            option(value = "Independent") Independent
+                            option(value = "Complete Sports") Complete Sports
+                            option(value = "Daily Post") Daily Post 
+                            option(value = "This Day") This Day
+                            option(value = "Business Day") Business Day
+                        label(for = "choice").h3 Choose A Paper
+                    br
+                    .input-field
+                        i.material-icons.prefix home
+                        textarea.materialize-textarea(id = "textarea1" placeholder="Please enter your home or office adderess" required)
+
+                        label(for ="textarea1") Address
+                    p#chckbttn
+                    input(name ="sex" type = "radio" id ="sex1" value = "Male")
+                    label(for= "sex1") Male
+                    br
+                    input(name ="sex" type= "radio" id ="sex2" value ="Female")
+                    label(for= "sex2") Female
+                    br
+                    p.h5 Choose delivery location
+                    input(type = "checkbox"  id = "loc1" name ="loc[]" value ="Home")
+                    label(for= "loc1") Home
+                    input(type = "checkbox" id = "loc2" name = "loc[]" value ="Office")
+                    label(for= "loc2") Office
+                    br
+                    br
+                    br
+                    .valign-wrapper
+                        button.btn.black.btn-large#mybtn Order
+        footer.page-footer
+            h5.h1.center-align Contact us
+            ul.center-align
+                li.footer.h4 Worisjakes@gmail.com
+                li.footer.h4 09076621816
+            .footer-copyright
+               div.fixed-bottom.black
+            .row.white
+                .col.s3.m3.blue
+                    .a.btn.btn-large.h5.blue(href="http://www.facebook.com" style = "background-color:#3b5998") 
+                        i.fa.fa-facebook-official(aria-hidden = true)
+                .col.s3.m3.light.blue.lighten-3
+                    .a.btn.btn-large.h5(href="www.facebook.com" style = "background-color:#00aced")
+                        i.fa.fa-twitter-square(aria-hidden = true style = "background-color:#00aced")
+                .col.s3.m3.red
+                    .a.btn.btn-large.h5.red(href="www.facebook.com")
+                        i.fa.fa-youtube-square(aria-hidden = true)
+                .col.s3.m3.purple.lighten-2
+                    .a.btn.btn-large.h5(href="www.facebook.com" style = "background-color:#bc2a8d")
+                        i.fa.fa-instagram(aria-hidden = true)

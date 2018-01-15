@@ -1,0 +1,111 @@
+doctype html
+html
+    head(lang = "en")
+        title Headline News | Home
+        link(rel = "stylesheet", href="/main.css")
+        link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster")
+        link(rel = "stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css")
+        link(href="https://fonts.googleapis.com/icon?family=Material+Icons", rel="stylesheet")
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous")
+        script(src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous")
+        script(src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous")
+        script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js")
+        script(src="/mainjs.js")
+        script(src="https://use.fontawesome.com/46f472fe73.js")
+        meta(charset = "utf-8")
+        meta(name ="viewport", content = "width= device-width, initial-scale = 1.0")
+    body
+        mixin display(href, word)
+            each images in href
+                -var d = new Date();
+                -var today = d.toLocaleDateString();
+                if images.imagestatus && today == images.postdate
+                    img.materialboxed.responsive-img#imagestatus.center-align(src =images.imagestatus width = "50%"  height = "auto" style = "display:inline")
+        header#header.h1.black-text(style="font-family:Lobster") The
+            span#headline  Headline 
+            span#news  News
+        ul.side-nav(id = "slide-out")
+            li 
+                div.user-view(style="height:280px")
+                    div.background
+                        img.responsive-img(src="http://www.imagesbuddy.com/images/53/2013/06/good-morning-tea-newspaper-graphic.jpg" height="100%")
+            li
+                a(href = "/home") HOME
+            li
+                a(href = "/orderNow") ORDER
+            li
+                a(href = "/iwitness") EYE WITNESS
+            li
+                +display(headlines, "Hello world")
+        a.pulse.button-collapse(href = "#" data-activates = "slide-out")
+            i.material-icons menu
+        div(class="slider")
+            ul(class="slides")
+                each img in worldNews
+                    -var d = new Date();
+                    -var today = d.toLocaleDateString();
+                    if today == img.postdate
+                        li
+                            img.responsive-img(src=img.images)
+                            div(class="caption left-align")
+                                h3 #{img.worldnews}
+                                h5.black(class="light grey-text text-lighten-3") #World News
+        .parallax-container
+            .parallax
+                img(src = "http://c7.alamy.com/comp/BBBBC5/newspaper-stand-BBBBC5.jpg")
+        div.wrapper
+            #headline.headline.h3
+                div.carousel.carousel-slider.center(data-indicators="true")
+                    div.carousel-fixed-item.center
+                        a.btn.waves-effect.white.grey-text.darken-text-2 Send iwitness report
+                    ul
+                    each report in reports
+                        li
+                            div.carousel-item.iwitness.black-text(href="#one!")
+                                h2 #{report.location}
+                                p.black-text #{report.report}
+                                br
+                                br
+                div #{msg}
+                form(method="post" id="iwit" action = "/iwitness" enctype="multipart/form-data")
+                    .input-field
+                        i.material-icons.prefix email
+                        input.form-control(type="email" id = "email"  name = "email" placeholder="Please enter your email address" required)
+                        label.h4(for ="email") Email address
+                    .input-field
+                        input.form-control(type="text"  id = "name"  name = "name" placeholder="Please enter your name" required)
+                        label.h4(for ="name") Name
+                    .input-field
+                        input.form-control(type="text"  id = "add" name = "location" placeholder="Please enter report location" required)
+                        label.h4(for ="add") Report address
+                    .input-field
+                        textarea.materialize-textarea(id = "textarea1" name ="report" placeholder="Please enter your report here" required)
+                        label(for ="textarea1") Report
+                        input.form-control(type="file"  id = "file" name = "image")
+                    .valign-wrapper
+                        button.center-align.btn.waves-effect.waves-light.btn-large(type = "submit") Submit
+        footer.page-footer
+            h5.h1.center-align Contact us
+            ul.center-align
+                li.footer.h4 Worisjakes@gmail.com
+                li.footer.h4 09076621816
+            .footer-copyright
+                .container    &copy; Headline News
+        div.fixed-bottom.black
+            .row.white
+                .col.s3.m3.blue
+                    .a.btn.btn-large.h5.blue(href="http://www.facebook.com" style = "background-color:#3b5998") 
+                        i.fa.fa-facebook-official(aria-hidden = true)
+                .col.s3.m3.light.blue.lighten-3
+                    .a.btn.btn-large.h5(href="www.facebook.com" style = "background-color:#00aced")
+                        i.fa.fa-twitter-square(aria-hidden = true style = "background-color:#00aced")
+                .col.s3.m3.red
+                    .a.btn.btn-large.h5.red(href="www.facebook.com")
+                        i.fa.fa-youtube-square(aria-hidden = true)
+                .col.s3.m3.purple.lighten-2
+                    .a.btn.btn-large.h5(href="www.facebook.com" style = "background-color:#bc2a8d")
+                        i.fa.fa-instagram(aria-hidden = true)

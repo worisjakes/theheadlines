@@ -1,0 +1,167 @@
+doctype html
+html
+    head(lang = "en")
+        title Headline News | Home
+        link(rel = "stylesheet", href="/main.css")
+        link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster")
+        link(rel = "stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css")
+        link(href="https://fonts.googleapis.com/icon?family=Material+Icons", rel="stylesheet")
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous")
+        script(src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous")
+        script(src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous")
+        script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js")
+        script(src="/mainjs.js")
+        meta(charset = "utf-8")
+        meta(name ="viewport", content = "width= device-width, initial-scale = 1.0")
+    
+    body
+        header#header.h1.black-text(style="font-family:Lobster") The
+            span#headline  Headline 
+            span#news  News
+        nav(class="nav-extended")
+            div(class="nav-wrapper")
+                a( class="brand-logo") Home
+                a(  data-activates="mobile-demo" class="button-collapse")
+                    i(class="material-icons") menu
+                ul(id="nav-mobile" class="right hide-on-med-and-down")
+                    li
+                        a(href="/home") HOME
+                    li
+                        a(href="/order") ORDER
+                    li
+                        a(href="/iwitness") EYE WITNESS
+      
+                ul(class="side-nav" id="mobile-demo")
+                    li
+                        a(href="/home") HOME
+                    li
+                        a(href="/order") ORDER
+                    li
+                        a(href="/iwitness") EYE WITNESS
+            div(class="nav-content")
+                ul(class="tabs tabs-transparent")
+                    li(class="tab")
+                        a(href="#test1") Politics
+                    li(class="tab")
+                        a(class="active" href="#test2") Technology
+                    li(class="tab")
+                        a(href="#test3") Sports
+                    li(class="tab")
+                        a(href="#test4") Entertainment
+        each item in headlines
+            div.container
+                -var d = new Date();
+                -var today = d.toLocaleDateString();
+                if item.category =="Politics" && today == item.postdate 
+                    div.cat.h5(id="test1" class="col s12") #{item.news} | #{item.paperpage} | #{item.papername}
+                else if today != item.postdate
+                    div.cat.h5(id="test1" class="col s12") #{item.news} | #{item.paperpage} | #{item.papername}
+                else if item.category == "Technology" && today == item.postdate
+                    div.cat.h5(id="test2" class="col s12") #{item.news} | #{item.paperpage} | #{item.papername}
+                else if today != item.postdate
+                    div.cat.h5(id="test2" class="col s12") #{item.news} | #{item.paperpage} | #{item.papername}
+                else if item.category == "Sports" && today == item.postdate
+                    div.cat.h5(id="test3" class="col s12") #{item.news} | #{item.paperpage} | #{item.papername}
+                else if today != item.postdate
+                    div.cat.h5(id="test3" class="col s12") #{item.news} | #{item.paperpage} | #{item.papername}
+                else if today != item.postdate
+                    div.cat.h5(id="test3" class="col s12") #{item.news} | #{item.paperpage} | #{item.papername}
+                else if item.category == "Entertainment" && today == item.postdate
+                    div.cat.h5(id="test4" class="col s12") #{item.news} | #{item.paperpage} | #{item.papername}
+                else if today != item.postdate
+                    div.cat.h5(id="test4" class="col s12") #{item.news} | #{item.paperpage} | #{item.papername}
+        div(class="slider")
+            ul(class="slides")
+                each img in worldNews
+                    -var d = new Date();
+                    -var today = d.toLocaleDateString();
+                    if today == img.postdate
+                        li
+                            img.responsive-img(src=img.images)
+                            div(class="caption left-align")
+                                h3 #{img.worldnews}
+                                h5.black(class="light grey-text text-lighten-3") #World News
+
+                
+        mixin display(href, word)
+                each images in href
+                    -var d = new Date();
+                    -var today = d.toLocaleDateString();
+                    if images.imagestatus && today == images.postdate
+                            img.materialboxed.responsive-img#imagestatus(src =images.imagestatus width = "20%" height = "auto" style = "display:inline")
+        +display(headlines, "Hello world")
+        .row
+            .col.m4.l4
+                form()
+                    .row.input-field.col.s12
+                        input(placeholder = "Enter to search " id = "search" type = "text" class ="validate" name = "search")
+                        label.h3(for = "search") search
+                        button.btn.waves-effect.waves-light(type = "submit") Submit
+            .col.m4.l4
+                form(method = "get" action = "/filter") 
+                    .row.input-field.col.s12
+                        select(name ="paper" value = "" selected) Choose a paper to filter
+                            option(value = "Vanguard") Vanguard
+                            option(value = "Sun") Sun
+                            option(value = "Guardian") Guardian
+                            option(value = "Daily Times") Daily Times
+                            option(value = "Independent") Independent
+                            option(value = "Complete Sports") Complete Sports
+                            option(value = "Daily Post") Daily Post 
+                            option(value = "This Day") This Day
+                            option(value = "Business Day") Business Day
+                        label.h3 Filter By
+                        button.btn.waves-effect.waves-light(type = "submit") Submit
+                            
+
+
+        .parallax-container
+            .parallax
+                img(src = "http://c7.alamy.com/comp/BBBBC5/newspaper-stand-BBBBC5.jpg")
+        div.wrapper
+            #headline.headline.h2.center-align 
+                span.headlines HEADLINES
+                form(method = "get" action = "/date")
+                        .row.input-field.col.s12
+                            input( id = "date" type = "date"  name = "date")
+                            button.btn.waves-effect.waves-light(type = "submit") Go to
+                                
+                hr
+                video.responsive-video(controls)
+                    each audio in audios
+                        -var d = new Date();
+                        -var today = d.toLocaleDateString();
+                        if today == audio.postdate
+                            source(src = audio.audioname type="audio/mp3")
+                ul#li
+                    blockquote.jumbo
+                        h2
+                            li.news No results found!!
+                    button.btn.center-align
+                         a(href = "/home") Home
+        .parallax-container
+            .parallax
+                img(src = "http://c7.alamy.com/comp/BBBBC5/newspaper-stand-BBBBC5.jpg")
+        footer.page-footer
+            h5.h1.center-align Contact us
+            ul.center-align
+                li.footer.h4 Worisjakes@gmail.com
+                li.footer.h4 09076621816
+            .footer-copyright
+                .container    &copy; Headline News
+        div.fixed-bottom.black
+            .row
+                .col.s3.m3.blue
+                    .h4#facebook Facebook
+                .col.s3.m3.light-blue
+                    .h4 Twitter
+                .col.s3.m3.red
+                    .h4 Youtube
+                .col.s3.m3
+                    .h4 Instagram 
+
+        

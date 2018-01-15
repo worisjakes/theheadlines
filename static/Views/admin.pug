@@ -1,0 +1,29 @@
+doctype html
+html
+    head(lang = "en")
+        title Headline News | Home
+        link(rel = "stylesheet", href="/main.css")
+        link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster")
+        link(rel = "stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css")
+        link(href="https://fonts.googleapis.com/icon?family=Material+Icons", rel="stylesheet")
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous")
+        script(src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous")
+        script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js")
+        meta(charset = "utf-8")
+        meta(name ="viewport", content = "width= device-width, initial-scale = 1.0")
+    body
+        header.h1.black-text(style="font-family:Lobster") The
+            span#headline  Headline
+            span#news  News
+        div.wrapper.h1 
+            .center-align Admin Login
+            form(method ="post" action ="/adminlogin")
+                div.form-group
+                    label.h3(for="exampleInputEmail1") Email address
+                    input.form-control#exampleInputEmail1(type="email" name = "username"  aria-describedby="emailHelp" placeholder="Enter email")
+                div.form-group
+                    label.h3(for="exampleInputPassword1") Password
+                    input#exampleInputPassword1.form-control(type="password" name = "password" placeholder="Password") 
+                button.btn.btn-primary(type="submit") Submit

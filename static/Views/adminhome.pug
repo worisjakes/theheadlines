@@ -1,0 +1,61 @@
+doctype html
+html
+    head(lang = "en")
+        title Headline News | Home
+        link(rel = "stylesheet", href="/main.css")
+        link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster")
+        link(rel = "stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css")
+        link(href="https://fonts.googleapis.com/icon?family=Material+Icons", rel="stylesheet")
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous")
+        script(src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous")
+        script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js")
+        meta(charset = "utf-8")
+        meta(name ="viewport", content = "width= device-width, initial-scale = 1.0")
+    body
+        header.h1.black-text(style="font-family:Lobster") The
+            span#headline  Headline
+            span#news  News
+        div.wrapper
+            .row
+                .col.m4.l4
+                    form(method ="post" enctype="multipart/form-data" action ="/addheadline").jumbotron
+                        legend.center-align.h2 Upload Headline news
+                        .form-group
+                            label.h3(for ="headlines") Headline :
+                            input.form-control#headlines(type="text" name = "headline")
+                            .form-group
+                                label.h3(for ="papername") Papername :
+                                input.form-control#papername(type="text" name = "papername")
+                            .form-group
+                                label.h3(for ="Category") Category :
+                            select.form-control#Category(multiple name="category")
+                                option.h4 Politics
+                                option.h4 Sports
+                                option.h4 Entertainment
+                                option.h4 Technology
+                            .form-group
+                                label.h3(for ="paperpage") Paperpage :
+                                input.form-control#paperpage(type="text" name = "paperpage")
+                            .form-group
+                                label.h3(for ="imagestatus") Paper Image:
+                                input.form-control#imagestatus(type="file" name = "imagestatus" multiple="multiple")
+                                button.btn.btn-primary(type="submit") Submit
+                .col.m4.l4
+                    form(method ="post" enctype="multipart/form-data" action ="/addworldnews").jumbotron
+                        legend.center-align.h2 Upload World News
+                        .form-group
+                            label.h3(for ="worldnews") World News :
+                            input.form-control#worldnews(type="text" name = "worldnews")
+                        .form-group
+                            label.h3(for ="image") World Image:
+                            input.form-control#image(type="file" name = "image" multiple="multiple")
+                            button.btn.btn-primary(type="submit") Submit
+                .col.m4.l4
+                    form(method ="post" enctype="multipart/form-data" action ="/addaudio").jumbotron
+                        legend.center-align.h2 Upload Audio
+                        .form-group
+                                label.h3(for ="image") Audio:
+                                input.form-control#image(type="file" name = "audio")
+                                button.btn.btn-primary(type="submit") Submit
